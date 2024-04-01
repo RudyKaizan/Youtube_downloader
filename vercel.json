@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "utube_downloader/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "utube_downloader/wsgi.py"
+        }
+    ]
+}

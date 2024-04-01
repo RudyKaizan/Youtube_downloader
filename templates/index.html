@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Utube Downloader</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/style.css">
+    </head>
+    <body>
+        <h1 class="heading"> Utube Downloader</h1><br><br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="link"> URL: </label>
+            <input type="text" name="link"><br><br>
+            <button type = "submit" name="fetch" value="fetch"> Get Download Options </button><br><br>
+        </form>
+        {% if videos%}
+            <h3>Download Options</h3>
+            <p>----------------------------</p>
+            <ul>
+                {%for video in videos%}
+                    <li>
+                        <input type="radio" name="download-vid" id="video{{ forloop.counter}}" value="{{ video.resolution}}">
+                        <label for="video{{ forloop.counter }}">{{video.resolution}}</label>
+                    </li>
+                {%endfor%}
+            </ul>
+            <button type="submit"> Download</button>
+        {%endif%}
+        <script src="" async defer></script>
+    </body>
+</html>
